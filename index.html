@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Renata - Meio Século de Luz!</title>
+    <style>
+        :root {
+            --primary: #d4af37; /* Dourado festivo */
+            --bg: #fffbf5; /* Fundo confortável para leitura */
+            --text: #2c2c2c;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        header {
+            background: linear-gradient(135deg, #b8860b, var(--primary));
+            color: white;
+            padding: 40px 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin: 0;
+            letter-spacing: 2px;
+        }
+
+        header p {
+            font-size: 1.3rem;
+            margin: 10px 0 0 0;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .intro-text {
+            font-size: 1.4rem;
+            line-height: 1.8;
+            margin: 40px 10px;
+            font-style: italic;
+        }
+
+        /* Foto de Família Otimizada */
+        .foto-familia {
+            width: 100%;
+            max-width: 600px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            margin: 20px auto;
+            display: block;
+        }
+
+        /* Botão gigante e acessível para leigos */
+        .btn-acao {
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            padding: 25px 40px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(231, 76, 60, 0.4);
+            transition: transform 0.2s;
+            margin: 30px 0;
+            width: 90%;
+            max-width: 400px;
+        }
+
+        .btn-acao:active {
+            transform: scale(0.95);
+        }
+
+        /* Mensagem que aparece após o clique */
+        .mensagem-secreta {
+            display: none;
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            margin-top: 30px;
+            animation: fadeIn 1s ease-in-out forwards;
+        }
+
+        .mensagem-secreta p {
+            font-size: 1.25rem;
+            line-height: 1.8;
+            text-align: left;
+        }
+
+        /* Iframe do YouTube oculto apenas para tocar o áudio */
+        #playerYoutube {
+            display: none;
+        }
+
+        footer {
+            margin-top: 60px;
+            padding: 20px;
+            font-size: 0.9rem;
+            color: #7f8c8d;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .metricas {
+            background: #f0f0f0;
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 10px;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Renata: 50 Anos! 🎉</h1>
+        <p>Celebrando meio século de sorrisos, amor e histórias!</p>
+    </header>
+
+    <div class="container">
+        <!-- A foto de vocês agora aparece logo no início da página -->
+        <img src="https://prodia.xyz" alt="Família Reunida" class="foto-familia">
+
+        <p class="intro-text">
+            "Cinquenta anos não são apenas números. São capítulos de uma linda história escrita com afeto, dedicação e momentos inesquecíveis ao lado de quem amamos."
+        </p>
+
+        <!-- Interação simplificada para idosos e leigos -->
+        <button class="btn-acao" id="btnSurpresa" onclick="revelarHomenagem()">
+            Clique Aqui para Ouvir a Música ❤️
+        </button>
+
+        <div class="mensagem-secreta" id="blocoHomenagem">
+            <h2>Nossa Homenagem Especial 🌟</h2>
+            <p><strong>Querida Renata,</strong></p>
+            <p>Hoje você comemora uma marca linda: o seu cinquentão! Meio século espalhando luz por onde passa. Olhar para você e ver a família reunida é ter a certeza de que as coisas mais bonitas da vida são construídas com amor verdadeiro.</p>
+            <p>Essa página foi feita com carinho por todos nós para que a distância física ou as barreiras da tecnologia não nos impeçam de dizer o quanto você é essencial em nossas vidas.</p>
+            <p><em>Parabéns pelo seu dia! Que venham muitos outros anos repletos de sorrisos, abraços apertados e desse gatinho gostoso no sofá!</em></p>
+            
+            <!-- Link do YouTube com autoplay ativo no clique -->
+            <iframe id="playerYoutube" width="560" height="315" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <footer>
+        <p>Feito com amor para a Renata • 2026</p>
+        <div class="metricas">
+            Família conectada: <span id="contadorAcessos">1</span> visitas a esta homenagem!
+        </div>
+    </footer>
+
+    <script>
+        // Métrica local anônima em conformidade com a LGPD
+        document.addEventListener("DOMContentLoaded", function() {
+            let acessos = localStorage.getItem("visitasRenata50");
+            if (!acessos) {
+                acessos = 1;
+            } else {
+                acessos = parseInt(acessos) + 1;
+            }
+            localStorage.setItem("visitasRenata50", acessos);
+            document.getElementById("contadorAcessos").innerText = acessos;
+        });
+
+        // Revela a homenagem e inicia a música simultaneamente
+        function revelarHomenagem() {
+            const bloco = document.getElementById("blocoHomenagem");
+            const botao = document.getElementById("btnSurpresa");
+            const player = document.getElementById("playerYoutube");
+            
+            // Atribui a URL do vídeo do Ira!
+            player.src = "https://youtube.com";
+            
+            bloco.style.display = "block";
+            botao.style.display = "none"; 
+            
+            bloco.scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
